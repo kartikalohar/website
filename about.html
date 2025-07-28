@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About META</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(180deg, #050035, #4a0296);
+      color: white;
+      min-height: 100vh;
+      padding: 50px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 50, 0.8);
+      display: flex;
+      justify-content: center;
+      padding: 12px 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #00d4ff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff00cc;
+    }
+
+    /* Crescent Moon Background */
+    .moon {
+      position: absolute;
+      top: 60px;
+      right: 80px;
+      width: 140px;
+      height: 140px;
+      background: transparent;
+      border-radius: 50%;
+      box-shadow: 
+        inset 35px 0 0 0 rgba(255, 245, 230, 0.9),
+        0 0 30px rgba(255, 255, 255, 0.2);
+      z-index: 0;
+    }
+
+    /* Stars */
+    .stars span {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+      box-shadow: 0 0 8px white;
+      z-index: 0;
+    }
+    .stars span:nth-child(1) { top: 10%; left: 20%; }
+    .stars span:nth-child(2) { top: 25%; left: 70%; }
+    .stars span:nth-child(3) { top: 40%; left: 15%; }
+    .stars span:nth-child(4) { top: 60%; left: 80%; }
+    .stars span:nth-child(5) { top: 75%; left: 50%; }
+    .stars span:nth-child(6) { top: 85%; left: 25%; }
+    .stars span:nth-child(7) { top: 20%; left: 90%; }
+    .stars span:nth-child(8) { top: 5%; left: 60%; }
+    .stars span:nth-child(9) { top: 50%; left: 30%; }
+    .stars span:nth-child(10) { top: 70%; left: 10%; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.2s cubic-bezier(.4,2,.6,1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+
+    .left-side {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0;
+      font-family: 'Orbitron', sans-serif;
+      gap: 24px;
+    }
+
+    .image-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .crest {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-top: 90px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      object-fit: cover;
+      box-shadow: 0 0 25px rgba(255,255,255,0.12);
+    }
+    .crest:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+      filter: brightness(1.2);
+    }
+
+    .certificate {
+      width: 230px;
+      height: 300px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+      border: 3px solid #fff;
+      border-radius: 8px;
+      margin-top: 0px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .certificate:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+      border-color: #00aaff;
+    }
+
+    .reg-box {
+      margin-top: -20px;
+      background: linear-gradient(135deg, #020f9b, #8a03c0);
+      border-radius: 20px;
+      padding: 15px 20px;
+      width: 300px;
+      min-height: 150px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 3px solid transparent;
+      background-clip: padding-box, border-box;
+      background-origin: padding-box, border-box;
+      position: relative;
+      z-index: 1;
+    }
+    .reg-box::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 23px;
+      z-index: -1;
+      background: linear-gradient(90deg, #ff00cc, #3333ff, #00aaff, #ff00cc);
+      background-size: 400% 400%;
+      animation: borderAnim 8s linear infinite;
+    }
+    @keyframes borderAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .reg-box span {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .reg-box strong {
+      font-size: 26px;
+      display: block;
+      font-weight: bold;
+    }
+    .reg-box a {
+      font-size: 13px;
+      margin-top: 8px;
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(90deg, #00aaff, #ff00cc);
+      padding: 6px 18px;
+      border-radius: 12px;
+      transition: background 0.3s;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(0, 102, 255, 0.18);
+    }
+    .reg-box a:hover, .reg-box a:focus {
+      background: linear-gradient(90deg, #ff00cc, #00aaff);
+      color: #fff;
+      outline: none;
+    }
+
+    .right-side {
+      max-width: 600px;
+      margin-top: 75px;
+      animation: fadeIn 1.5s cubic-bezier(.4,2,.6,1);
+    }
+    .right-side h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .right-side h1 .about {
+      color: orange;
+      margin-right: 5px;
+      letter-spacing: 2px;
+    }
+    .right-side h1 .meta {
+      background: linear-gradient(to right, #ff00cc, #3333ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+    .right-side p {
+      color: #d0d0d0;
+      line-height: 1.7;
+      font-size: 17px;
+      margin-bottom: 22px;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+    .read-btn {
+      background: linear-gradient(90deg, #00aaff, #ff00cc);
+      padding: 12px 32px;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.18s cubic-bezier(.4,2,.6,1);
+      font-weight: 700;
+      box-shadow: 0 4px 16px #00aaff33;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .read-btn::before {
+      content: "";
+      position: absolute;
+      left: -70%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.7) 100%);
+      transform: skewX(-25deg);
+      transition: left 0.5s cubic-bezier(.4,2,.6,1);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .read-btn:hover, .read-btn:focus {
+      background: linear-gradient(90deg, #ff00cc, #00aaff);
+      box-shadow: 0 8px 32px #ff00cc33;
+      outline: none;
+      transform: scale(1.07);
+    }
+    .read-btn:hover::before, .read-btn:focus::before {
+      left: 120%;
+      transition: left 0.5s cubic-bezier(.4,2,.6,1);
+    }
+
+    @media (max-width: 1000px) {
+      .container { flex-direction: column; gap: 30px; align-items: center; }
+      .left-side { min-height: unset; }
+      .right-side { margin-top: 30px; }
+    }
+    @media (max-width: 700px) {
+      body { padding: 20px 5px; }
+      .container { gap: 10px; }
+      .left-side { padding: 10px 0; }
+      .crest { width: 90px; height: 90px; margin-top: 30px; }
+      .certificate { width: 120px; height: 160px; }
+      .reg-box { width: 90vw; min-width: 0; }
+      .right-side h1 { font-size: 26px; }
+      .right-side p { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<!-- Navigation -->
+  <nav>
+  <a href="home.html">Home</a>
+  <a href="investment.html">Vision</a>
+</nav>
+
+  <!-- Crescent Moon Background -->
+  <div class="moon"></div>
+  <!-- Stars -->
+  <div class="stars">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="container">
+    <!-- Left -->
+    <div class="left-side">
+      <div class="image-container">
+        <img class="crest" src="../assets/images/crest.webp" alt="META Crest">
+        <img class="certificate" src="../assets/images/certificate.jpeg" alt="META Certificate">
+      </div>
+      <div class="reg-box">
+        <span>officially registered company</span>
+        <strong>#63327622</strong>
+        <a href="" target="_blank" rel="noopener">CLICK HERE FOR MORE INFO</a>
+      </div>
+    </div>
+    <!-- Right -->
+    <div class="right-side">
+      <h1><span class="about">∞ ABOUT</span><span class="meta"> META</span></h1>
+      <p>
+        META is a forward-thinking technology company focused on innovation in artificial intelligence, immersive experiences, and digital infrastructure. Our mission is to create seamless digital ecosystems that empower users, businesses, and developers to interact and evolve in smarter ways. We believe in pushing boundaries and redefining what's possible in the virtual and physical world through cutting-edge research and bold ideas.
+      </p>
+      <p>
+        With a growing suite of platforms and services, META is at the forefront of building the metaverse — a shared virtual space bridging the gap between reality and digital interaction. Our work spans virtual reality, augmented reality, AI, and decentralized platforms, all geared toward creating a more connected, inclusive, and intelligent future.
+      </p>
+      <button class="read-btn" tabindex="0">Read More</button>
+    </div>
+  </body>
+  </html>
+    
